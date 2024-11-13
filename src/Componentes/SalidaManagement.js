@@ -12,6 +12,7 @@ const SalidaManagement = ({ stockGeneral, fetchStockGeneral }) => {
     try {
       const response = await axios.get("http://localhost:3001/api/salidas");
       setSalidas(response.data);
+      console.log(response.data)
     } catch (error) {
       console.error("Error al obtener las salidas", error);
       Swal.fire({
@@ -68,6 +69,7 @@ const SalidaManagement = ({ stockGeneral, fetchStockGeneral }) => {
       }
 
       await axios.post("http://localhost:3001/api/salidas", salida);
+      
 
       await Promise.all(
         salida.productos.map(async (producto) => {
